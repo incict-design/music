@@ -51,10 +51,9 @@
 </head>
 
 <body>
-<h2>音楽再生アプリ（永続版）</h2>
+<h2>音声再生</h2>
 
-<audio id="player" controls></audio>
-<br>
+
 
 <!-- 固定曲ボタン -->
 <button onclick="playSound('music/a.mp3')">曲 A を再生</button><br>
@@ -62,12 +61,12 @@
 <button onclick="playSound('music/c.mp3')">曲 C を再生</button><br>
 <button onclick="playSound('music/d.mp3')">曲 D を再生</button><br>
 
-
+<audio id="player" controls></audio>
 
 <hr>
 
 <!-- PCからアップロード -->
-<label for="fileInput">PCから曲をアップロード（mp3/m4a）:</label><br>
+<label for="fileInput">アップロード（mp3/m4a）:</label><br>
 <input type="file" id="fileInput" class="fileInput" accept=".mp3,.m4a">
 
 <!-- アップロードしたファイル一覧 -->
