@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>音楽再生アプリ</title>
+<style>
+    body {
+        font-family: system-ui;
+        margin: 30px;
+        text-align: center;
+    }
+    button {
+        width: 200px;
+        padding: 15px;
+        margin: 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+
+<body>
+<h2>音楽再生 Webアプリ</h2>
+
+<!-- オーディオタグ（音は最初は再生しない） -->
+<audio id="player"></audio>
+
+<button onclick="playSound('a.mp3')">曲 A を再生</button><br>
+<button onclick="playSound('b.mp3')">曲 B を再生</button><br>
+<button onclick="playSound('c.mp3')">曲 C を再生</button><br>
+<button onclick="playSound('d.mp3')">曲 D を再生</button><br>
+
+<script>
+function playSound(filename) {
+    const player = document.getElementById('player');
+    player.src = filename;    // mp3 または m4a を指定
+    player.play();
+}
+</script>
+
+</body>
+</html>
