@@ -48,7 +48,7 @@
         margin-top: 10px;
         text-align: left;
         display: inline-block;
-        width: 250px;
+        width: 300px;
     }
     .file-item {
         display: flex;
@@ -56,10 +56,17 @@
         justify-content: flex-start;
         margin: 5px 0;
     }
+    .file-name {
+        display: inline-block;
+        width: 180px; /* 曲名部分の幅を固定 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
     .file-buttons {
         display: flex;
         gap: 5px;
-        margin-left: 15px; /* 曲名とボタンの間にスペースを追加 */
+        flex-shrink: 0; /* ボタン幅固定 */
     }
     .file-buttons button {
         width: 60px;
@@ -163,6 +170,7 @@ function loadFiles() {
             div.className = 'file-item';
 
             const nameSpan = document.createElement('span');
+            nameSpan.className = 'file-name';
             nameSpan.textContent = item.name;
 
             const buttonsDiv = document.createElement('div');
