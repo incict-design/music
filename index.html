@@ -62,7 +62,7 @@
 <button onclick="playSound('music/c.mp3')">曲 C を再生</button><br>
 <button onclick="playSound('music/d.mp3')">曲 D を再生</button><br>
 
-<button class="stop" onclick="stopSound()">停止</button>
+
 
 <hr>
 
@@ -104,11 +104,7 @@ function playSound(filename) {
     player.play();
 }
 
-// 停止
-function stopSound() {
-    player.pause();
-    player.currentTime = 0;
-}
+
 
 // ファイルアップロード
 fileInput.addEventListener('change', function() {
