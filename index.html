@@ -30,18 +30,18 @@
 <body>
 <h2>音楽再生 Webアプリ</h2>
 
-<!-- オーディオタグ（音は最初は再生しない） -->
+<!-- 再生プレイヤー -->
 <audio id="player"></audio>
 
-<button onclick="playSound('a.mp3')">曲 A を再生</button><br>
-<button onclick="playSound('b.mp3')">曲 B を再生</button><br>
-<button onclick="playSound('c.mp3')">曲 C を再生</button><br>
-<button onclick="playSound('d.mp3')">曲 D を再生</button><br>
+<button onclick="playSound('music/a.mp3')">曲 A を再生</button><br>
+<button onclick="playSound('music/b.mp3')">曲 B を再生</button><br>
+<button onclick="playSound('music/c.mp3')">曲 C を再生</button><br>
+<button onclick="playSound('music/d.mp3')">曲 D を再生</button><br>
 
 <script>
 function playSound(filename) {
     const player = document.getElementById('player');
-    player.src = filename;    // mp3 または m4a を指定
+    player.src = filename;   // music フォルダ内の mp3 を再生
     player.play();
 }
 </script>
