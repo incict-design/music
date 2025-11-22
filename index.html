@@ -11,7 +11,7 @@
         text-align: center;
     }
     button {
-        width: 200px;
+        width: 220px;
         padding: 15px;
         margin: 10px;
         font-size: 18px;
@@ -24,13 +24,19 @@
     button:hover {
         background-color: #45a049;
     }
+    .stop {
+        background-color: #d9534f;
+    }
+    .stop:hover {
+        background-color: #c9302c;
+    }
 </style>
 </head>
 
 <body>
 <h2>音楽再生 Webアプリ</h2>
 
-<!-- 再生プレイヤー -->
+<!-- オーディオ -->
 <audio id="player"></audio>
 
 <button onclick="playSound('music/a.mp3')">曲 A を再生</button><br>
@@ -38,14 +44,24 @@
 <button onclick="playSound('music/c.mp3')">曲 C を再生</button><br>
 <button onclick="playSound('music/d.mp3')">曲 D を再生</button><br>
 
+<!-- ストップボタン -->
+<button class="stop" onclick="stopSound()">停止</button>
+
 <script>
+const player = document.getElementById('player');
+
+// 再生
 function playSound(filename) {
-    const player = document.getElementById('player');
-    player.src = filename;   // music フォルダ内の mp3 を再生
+    player.src = filename;
     player.play();
+}
+
+// 停止
+function stopSound() {
+    player.pause();
+    player.currentTime = 0;  // 再生位置を最初に戻す
 }
 </script>
 
 </body>
 </html>
-
