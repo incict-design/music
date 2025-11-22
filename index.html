@@ -48,14 +48,23 @@
         margin-top: 10px;
         text-align: left;
         display: inline-block;
+        width: 250px;
     }
     .file-item {
-        margin: 3px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 5px 0;
     }
-    .file-item button {
+    .file-buttons {
+        display: flex;
+        gap: 5px;
+    }
+    .file-buttons button {
         width: 60px;
-        margin-left: 5px;
         font-size: 12px;
+        padding: 4px;
+        margin: 0;
     }
 </style>
 </head>
@@ -148,14 +157,24 @@ function loadFiles() {
         const cursor = event.target.result;
         if(cursor) {
             const item = cursor.value;
+
             const div = document.createElement('div');
             div.className = 'file-item';
-            div.innerHTML = `
-                ${item.name} 
+
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = item.name;
+
+            const buttonsDiv = document.createElement('div');
+            buttonsDiv.className = 'file-buttons';
+            buttonsDiv.innerHTML = `
                 <button onclick="playFile(${item.id})">再生</button>
                 <button onclick="deleteFile(${item.id})" class="stop">削除</button>
             `;
+
+            div.appendChild(nameSpan);
+            div.appendChild(buttonsDiv);
             uploadedList.appendChild(div);
+
             cursor.continue();
         }
     };
