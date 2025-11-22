@@ -87,7 +87,7 @@
         <button onclick="playSound('music/b.mp3')">曲 B</button><br>
         <button onclick="playSound('music/c.mp3')">曲 C</button><br>
         <button onclick="playSound('music/d.mp3')">曲 D</button><br>
-        <button class="stop" onclick="stopSound()">停止</button><br><br>
+      
         <audio id="player" controls></audio>
     </div>
 
@@ -130,11 +130,7 @@ function playSound(filename) {
     player.play();
 }
 
-// 停止
-function stopSound() {
-    player.pause();
-    player.currentTime = 0;
-}
+
 
 // ファイルアップロード
 fileInput.addEventListener('change', function() {
