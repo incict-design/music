@@ -10,13 +10,23 @@
         margin: 30px;
         text-align: center;
     }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 50px;
+        flex-wrap: wrap;
+    }
+    .player-area, .upload-area {
+        text-align: center;
+    }
     button {
-        width: 220px;
-        padding: 10px;
-        margin: 5px;
-        font-size: 16px;
+        width: 150px;
+        padding: 8px;
+        margin: 3px;
+        font-size: 14px;
         border: none;
-        border-radius: 10px;
+        border-radius: 8px;
         background-color: #4CAF50;
         color: white;
         cursor: pointer;
@@ -31,21 +41,21 @@
         background-color: #c9302c;
     }
     .fileInput {
-        margin: 20px;
-        font-size: 16px;
+        margin: 10px;
+        font-size: 14px;
     }
     .uploaded-list {
-        margin-top: 20px;
+        margin-top: 10px;
         text-align: left;
         display: inline-block;
     }
     .file-item {
-        margin: 5px 0;
+        margin: 3px 0;
     }
     .file-item button {
-        width: 80px;
+        width: 60px;
         margin-left: 5px;
-        font-size: 14px;
+        font-size: 12px;
     }
 </style>
 </head>
@@ -53,24 +63,24 @@
 <body>
 <h2>音声再生</h2>
 
+<div class="container">
+    <!-- 音声再生エリア -->
+    <div class="player-area">
+        <button onclick="playSound('music/a.mp3')">曲 A</button><br>
+        <button onclick="playSound('music/b.mp3')">曲 B</button><br>
+        <button onclick="playSound('music/c.mp3')">曲 C</button><br>
+        <button onclick="playSound('music/d.mp3')">曲 D</button><br>
+        <button class="stop" onclick="stopSound()">停止</button><br><br>
+        <audio id="player" controls></audio>
+    </div>
 
-
-<!-- 固定曲ボタン -->
-<button onclick="playSound('music/a.mp3')">曲 A を再生</button><br>
-<button onclick="playSound('music/b.mp3')">曲 B を再生</button><br>
-<button onclick="playSound('music/c.mp3')">曲 C を再生</button><br>
-<button onclick="playSound('music/d.mp3')">曲 D を再生</button><br>
-
-<audio id="player" controls></audio>
-
-<hr>
-
-<!-- PCからアップロード -->
-<label for="fileInput">アップロード（mp3/m4a）:</label><br>
-<input type="file" id="fileInput" class="fileInput" accept=".mp3,.m4a">
-
-<!-- アップロードしたファイル一覧 -->
-<div class="uploaded-list" id="uploadedList"></div>
+    <!-- アップロードエリア -->
+    <div class="upload-area">
+        <label for="fileInput">アップロード（mp3/m4a）:</label><br>
+        <input type="file" id="fileInput" class="fileInput" accept=".mp3,.m4a"><br>
+        <div class="uploaded-list" id="uploadedList"></div>
+    </div>
+</div>
 
 <script>
 const player = document.getElementById('player');
@@ -90,7 +100,7 @@ request.onupgradeneeded = function(event) {
 
 request.onsuccess = function(event) {
     db = event.target.result;
-    loadFiles(); // ページロード時に保存ファイルを表示
+    loadFiles();
 };
 
 request.onerror = function(event) {
@@ -103,7 +113,11 @@ function playSound(filename) {
     player.play();
 }
 
-
+// 停止
+function stopSound() {
+    player.pause();
+    player.currentTime = 0;
+}
 
 // ファイルアップロード
 fileInput.addEventListener('change', function() {
